@@ -106,7 +106,7 @@ const projects: Project[] = [
     image: calculatorPreview,
     imageAlt: 'Calculator site preview',
     links: [
-      { label: 'Live Site', url: 'https://geevee-101.github.io/calculator/' },
+      { label: 'Live Site', url: 'https://aidikhalid.github.io/calculator/' },
       { label: 'Github', url: 'https://github.com/aidikhalid/calculator/tree/main' },
     ],
     paragraphs: [
