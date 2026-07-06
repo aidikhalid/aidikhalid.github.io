@@ -164,7 +164,7 @@ function App() {
         </div>
 
         {/* Projects */}
-        <ScrollArea className="h-full w-full min-[900px]:min-w-[400px]">
+        <ScrollArea className="h-full w-full min-[900px]:min-w-[400px] max-w-[600px]">
           <div className="min-h-full flex flex-col justify-end pb-8">
             <Accordion className="w-full gap-2">
               {projects.map((project) => (
