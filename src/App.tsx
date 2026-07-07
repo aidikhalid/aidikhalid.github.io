@@ -133,26 +133,25 @@ function App() {
       <div className="max-w-7xl mx-auto px-5 pt-[30px] flex flex-col min-[900px]:flex-row min-[900px]:gap-[50px] min-[900px]:h-screen min-[900px]:overflow-hidden">
 
         {/* Header */}
-        <div className="flex flex-col justify-between h-full max-w-xl">
+        <div className="flex flex-col justify-between h-full min-[1100px]:max-w-xl min-[1100px]:w-full min-[1100px]:flex-shrink-0">
           <div>
             <div className="flex justify-between">
-              <img src={aidiProfilePic} alt="Profile picture of Aidi" className="w-[280px]" />
-              <div className="block min-[600px]:hidden">
+              <div className="flex flex-col">
+                <img src={aidiProfilePic} alt="Profile picture of Aidi" className="w-[280px]" />
+                <img src={aidiLowGow} alt="Aidi Low Gow" className="mt-4 w-[280px]" />
+              </div>
+              <div className="flex flex-col gap-2 bg-primary block min-[900px]:hidden">
                 <ModeToggle />
               </div>
             </div>
-            <img src={aidiLowGow} alt="Aidi Low Gow" className="mt-4 w-[280px]" />
           </div>
           <div className="flex flex-col pb-8">
-            <h1 className='text-[3rem] mt-4 min-[600px]:text-[4rem] min-[1100px]:text-[6rem] min-[1100px]:mt-0'>AIDI KHALID</h1>
-            <div className="flex gap-8">
+            <h1 className='text-[3rem] mt-4 mb-4 min-[425px]:text-[4rem] min-[1100px]:text-[6rem] min-[1100px]:mt-0 min-[1100px]:mb-0'>AIDI KHALID</h1>
+            <div>
               <div className="flex gap-2">
                 <a href={resume} target="_blank" className={cn(buttonVariants({ variant: 'link', size: 'lg' }), 'text-lg')}>RESUME</a>
                 <a href="https://www.linkedin.com/in/aidikhalid" target="_blank" className={cn(buttonVariants({ variant: 'link', size: 'lg' }), 'text-lg')}>LINKEDIN</a>
                 <a href="https://github.com/aidikhalid" target="_blank" className={cn(buttonVariants({ variant: 'link', size: 'lg' }), 'text-lg')}>GITHUB</a>
-              </div>
-              <div className="hidden min-[600px]:block">
-                <ModeToggle />
               </div>
             </div>
             <div className="mt-[10px]">
@@ -164,43 +163,49 @@ function App() {
         </div>
 
         {/* Projects */}
-        <ScrollArea className="h-full w-full min-[900px]:min-w-[400px] max-w-[600px]">
-          <div className="min-h-full flex flex-col justify-end pb-8">
-            <Accordion className="w-full gap-2">
-              {projects.map((project) => (
-                <AccordionItem key={project.id} value={project.id}>
-                  <AccordionTrigger className="text-[1.5rem]">{project.title.toUpperCase()}</AccordionTrigger>
-                  <AccordionContent>
-                    <div className="flex flex-col pt-4 gap-4">
-                      <div>
-                        <img src={project.image} alt={project.imageAlt} className="w-md" />
-                      </div>
-                      <div>
-                        <div className="flex gap-2">
-                          {project.links.map((link) => (
-                            <a key={link.label} href={link.url} target="_blank" className={cn(buttonVariants({ variant: 'link', size: 'lg' }), 'text-lg')}>
-                              {link.label.toUpperCase()}
-                            </a>
-                          ))}
-                        </div>
-                        <div className="mt-[10px] space-y-[1em]">
-                          {project.paragraphs.map((para, i) => (
-                            <p key={i}>
-                              {para.split('\n').map((line, j, arr) => (
-                                <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
-                              ))}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+        <div className="flex flex-col w-full">
+          <div className="hidden min-[900px]:block">
+            <div className="flex justify-end bg-primary">
+              <ModeToggle />
+            </div>
           </div>
-        </ScrollArea>
-
+          <ScrollArea className="h-full w-full min-[900px]:min-w-[400px]">
+            <div className="min-h-full flex flex-col justify-end pb-8">
+              <Accordion className="w-full gap-2">
+                {projects.map((project) => (
+                  <AccordionItem key={project.id} value={project.id}>
+                    <AccordionTrigger className="text-[1.5rem]">{project.title.toUpperCase()}</AccordionTrigger>
+                    <AccordionContent>
+                      <div className="flex flex-col pt-4 gap-4">
+                        <div>
+                          <img src={project.image} alt={project.imageAlt} className="w-md" />
+                        </div>
+                        <div>
+                          <div className="flex gap-2">
+                            {project.links.map((link) => (
+                              <a key={link.label} href={link.url} target="_blank" className={cn(buttonVariants({ variant: 'link', size: 'lg' }), 'text-lg')}>
+                                {link.label.toUpperCase()}
+                              </a>
+                            ))}
+                          </div>
+                          <div className="mt-[10px] space-y-[1em]">
+                            {project.paragraphs.map((para, i) => (
+                              <p key={i}>
+                                {para.split('\n').map((line, j, arr) => (
+                                  <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
+                                ))}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </ScrollArea>
+        </div>
       </div>
     </>
   )
